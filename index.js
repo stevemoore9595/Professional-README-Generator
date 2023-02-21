@@ -1,61 +1,71 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown');
+const generateMarkdown = require('./util/generateMarkdown');
 const fs = ('fs');
+const utils = require('util');
 
 // TODO: Create an array of questions for user input
 const questions = [{
     type: 'input',
     message:'What is title of the project?', 
-    name: 'Title',
+    name: 'Title'
 }, {
     type: 'input',
     message: 'What is the description of your prject (your motivation, why, what problem did it solve, what did you learn)?', 
-    name: 'Description',
+    name: 'Description'
 }, {
     type: 'input',
     message: 'Is a Table of Contents required for the project?', 
-    name: 'Table of Contents',
+    name: 'Table of Contents'
 }, {
     type: 'input',
     message: 'What is required to install the project?', 
-    name: 'Installation',
+    name: 'Installation'
 }, {
     type: 'input',
     message: 'What is this project used for?', 
-    name: 'Usage',
+    name: 'Usage'
 }, {
     type: 'input',
     message: 'What is the name of the license?', 
-    name: 'License',
+    name: 'License'
 }, {
     type: 'input',
     message: 'What are the guidelines on how to contribute?', 
-    name: 'Contributing',
+    name: 'Contributing'
 }, {
     type: 'input',
     message: 'What are the instructions to test the project?', 
-    name: 'Tests',
+    name: 'Tests'
 }, {
     type: 'input',
     message: 'What is your GitHub username?, What is your email?', 
-    name: 'Questions',
+    name: 'Questions'
 }];
 
 // TODO: Create a function to write README file
 function writeToFile(filename, data) {
-    try {
-        fs.writeFileSync(filename, data);
-            // console.log(file, data)
-    } catch (error) {
-         console.log(error);
-        }; 
+    console.log(filename)
+    console.log(data)
+    fs.writeFile(filename, data, function (error) {
+        if (error) {
+           return console.log(error)
+        } else {
+            console.log('success')
+        }
+    })
+    // try {
+    //     fs.writeFileSync(filename, data);
+    //         // console.log(file, data)
+    // } catch (error) {
+    //      console.log(error);
+    //     }; 
 };
 // TODO: Create a function to initialize app
 function init() {
     return inquirer.prompt(questions)
-    .then(data => {
-        writeToFile('README.md', generateMarkdown);
+    .then(function (data) {
+        writeToFile('README.md', generateMarkdown(data));
         console.log(data);
     }); 
 };
