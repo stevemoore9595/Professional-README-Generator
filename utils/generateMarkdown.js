@@ -4,7 +4,15 @@ function renderLicenseBadge(license) {}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  if ('MIT' === license) {
+    return 'https://img.shields.io/badge/License-MIT-yellow.svg'
+  } else if ('Mozilla' === license) {
+    return 'https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg'
+  } else {
+    return 'https://img.shields.io/badge/License-Apache%202.0-blue.svg'
+  }
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
@@ -12,11 +20,12 @@ function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+
+  return `# ${data.Title} ![License: ${data.License}](${renderLicenseLink(data.License)})
 
   ## Description
 
-  ${data.description}
+  ${data.Description}
 
   ## Table of Contents
 
@@ -30,28 +39,27 @@ function generateMarkdown(data) {
 
   ## Installation
 
-  ${data.installation}
+  ${data.Installation}
 
   ## Usage
 
-  ${data.usage}
+  ${data.Usage}
 
   ## License
 
-  ${data.license}
+  ${data.License}
 
   ## Contributing
 
-  ${data.contributing}
+  ${data.Contributing}
 
   ## Tests
 
-  ${data.tests}
+  ${data.Tests}
 
   ## Questions
 
-  ${data.github}
-  ${data.email}
+  ${data.Questions}
   
   `
 }
