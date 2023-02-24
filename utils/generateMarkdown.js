@@ -1,9 +1,4 @@
-// Function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
-
-// Function that returns the license link
-// If there is no license, return an empty string
+// Function that returns the license link an and badge
 function renderLicenseLink(license) {
   if ('MIT' === license) {
     return 'https://img.shields.io/badge/License-MIT-yellow.svg'
@@ -13,10 +8,6 @@ function renderLicenseLink(license) {
     return 'https://img.shields.io/badge/License-Apache%202.0-blue.svg'
   }
 };
-
-// Function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
 
 // Function to generate markdown for README
 function generateMarkdown(data) {
@@ -59,9 +50,11 @@ function generateMarkdown(data) {
 
   ## Questions
 
-  ## Click the following link to access my GitHub profile: ${data.Questions} https://github.com/stevemoore9595
+  - Questions may be submitted here: ${data.Questions}
+
+  - Click the following link to access my GitHub profile: ${data.Username}, https://github.com/stevemoore9595
   
-  ## For any additional questions, you may contact me at: ${data.Questions}
+  - For any additional questions, you may contact me at: ${data.Email}
   `
 }
 
