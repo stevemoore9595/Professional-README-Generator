@@ -11,7 +11,7 @@ const questions = [{
     name: 'Title'
 }, {
     type: 'input',
-    message: 'What is the description of your prject (your motivation, why, what problem did it solve, what did you learn)?', 
+    message: 'What is the description of your project (your motivation, why, what problem did it solve, what did you learn)?', 
     name: 'Description'
 }, {
     type: 'input',
